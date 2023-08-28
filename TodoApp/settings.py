@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-id_*6c==3gtjfmqpv1x5ehqus)y$=$lporeg)8)pe87)$%n0f(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.TodoAppConfig',  # define the app from api file
     'rest_framework',  # django rest framework
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'TodoApp.urls'
@@ -120,3 +123,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_ALL_ORIGINS = True
